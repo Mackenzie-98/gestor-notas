@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestor de Planilla de Notas</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-lg-8">
+                <table class="table table-bordered">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>No</th>
+                            <th>Primer Apellido</th>
+                            <th>Segundo Apellido</th>
+                            <th>Primer Nombre</th>
+                            <th>Segundo Nombre</th>
+                            <th>Puntaje</th>
+                            <th>Historial</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tablaEstudiantes">
+                        <!-- Los estudiantes se cargarán aquí mediante JS -->
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-lg-4">
+                <div class="panel">
+                    <h2>Panel Admin</h2>
+                    <button class="btn btn-success mb-2" onclick="modificarPuntaje(5)">Sumar 5</button>
+                    <button class="btn btn-warning mb-2" onclick="modificarPuntaje(-5)">Restar 5</button>
+                    <button class="btn btn-success mb-2" onclick="modificarPuntaje(10)">Sumar 10</button>
+                    <button class="btn btn-warning mb-2" onclick="modificarPuntaje(-10)">Restar 10</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="modalHistorial" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Historial de Puntajes</h5>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <ul id="listaHistorial" class="list-unstyled">
+                        <!-- El historial de puntajes se cargará aquí -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+
+</html>
