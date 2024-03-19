@@ -104,3 +104,8 @@ button:hover {
 .table-primary {
     background-color: #b8daff;
 }
+
+.table-responsive {
+    max-height: 30vw;
+    overflow-y: auto;
+}
