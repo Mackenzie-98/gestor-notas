@@ -1,67 +1,65 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestor de Planilla de Notas</title>
+    <title>Tablero de Aulas</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/students-board.css">
+    <style>
+        .animated {
+            animation-duration: 1s;
+            animation-fill-mode: both;
+        }
+        .fadeInUp {
+            animation-name: fadeInUp;
+        }
+        @keyframes fadeInUp {
+            from {
+                transform: translate3d(0, 40px, 0);
+                opacity: 0;
+            }
+            to {
+                transform: translate3d(0, 0, 0);
+                opacity: 1;
+            }
+        }
+    </style>
 </head>
-
 <body>
-    <div class="container-flex">
-        <div class="row">
-            <div class="col-lg-8">
-                <div class="table-responsive"> <!-- Agregar esta clase -->
-                    <table class="table table-bordered">
-                        <thead class="thead-dark">
+    <div class="container mt-5">
+        <h2>Tablero de Aulas</h2>
+        <div id="aulasContainer" class="d-flex flex-wrap justify-content-center"></div>
+    </div>
+
+    <!-- Modal para mostrar estudiantes -->
+    <div class="modal fade" id="modalEstudiantes" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Estudiantes del Aula</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <table class="table">
+                        <thead>
                             <tr>
-                                <th>No</th>
-                                <th>Primer Apellido</th>
-                                <th>Segundo Apellido</th>
-                                <th>Primer Nombre</th>
-                                <th>Segundo Nombre</th>
+                                <th>Apellidos</th>
+                                <th>Nombres</th>
                                 <th>Puntaje</th>
-                                <th>Historial</th>
                             </tr>
                         </thead>
-                        <tbody id="tablaEstudiantes">
-                            <!-- Los estudiantes se cargarán aquí mediante JS -->
-                        </tbody>
+                        <tbody id="tablaEstudiantes"></tbody>
                     </table>
                 </div>
             </div>
-            <div class="col-lg-4">
-                <div class="panel">
-                    <h2>Panel Admin</h2>
-                    <button class="btn btn-success mb-2" onclick="modificarPuntaje(5)">Sumar 5</button>
-                    <button class="btn btn-warning mb-2" onclick="modificarPuntaje(-5)">Restar 5</button>
-                    <button class="btn btn-success mb-2" onclick="modificarPuntaje(10)">Sumar 10</button>
-                    <button class="btn btn-warning mb-2" onclick="modificarPuntaje(-10)">Restar 10</button>
-                </div>
-            </div>
         </div>
     </div>
-    <div id="modalHistorial" class="modal fade">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Historial de Puntajes</h5>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-                <div class="modal-body">
-                    <ul id="listaHistorial" class="list-unstyled">
-                        <!-- El historial de puntajes se cargará aquí -->
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
+
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="../js/students-board.js"></script>
+    <script src="students-board.js"></script>
 </body>
-
 </html>
