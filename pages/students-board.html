@@ -3,55 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tablero de Aulas</title>
+    <title>Tablero de Estudiantes</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <style>
-        .animated {
-            animation-duration: 1s;
-            animation-fill-mode: both;
+        .btn-icon {
+            margin-left: 5px;
         }
-        .fadeInUp {
-            animation-name: fadeInUp;
+        .action-buttons .btn {
+            padding: 0.375rem 0.75rem;
+            font-size: 1.2rem; /* Ajuste del tamaño de los iconos para mayor visibilidad */
         }
-        @keyframes fadeInUp {
-            from {
-                transform: translate3d(0, 40px, 0);
-                opacity: 0;
-            }
-            to {
-                transform: translate3d(0, 0, 0);
-                opacity: 1;
-            }
+        .list-group-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .action-buttons {
+            display: flex;
+            gap: 10px; /* Espaciado entre botones */
         }
     </style>
 </head>
 <body>
-    <div class="container mt-5">
-        <h2>Tablero de Aulas</h2>
-        <div id="aulasContainer" class="d-flex flex-wrap justify-content-center"></div>
+    <div class="container">
+        <!-- Lista de aulas creadas -->
+        <ul id="listaAulas" class="list-group mt-3">
+            <!-- Las aulas se cargarán aquí mediante JavaScript -->
+        </ul>
     </div>
 
-    <!-- Modal para mostrar estudiantes -->
-    <div class="modal fade" id="modalEstudiantes" tabindex="-1" role="dialog">
-        <div class="modal-dialog modal-lg" role="document">
+    <!-- Modal para editar aula -->
+    <div class="modal fade" id="modalEditarAula" tabindex="-1" aria-labelledby="modalEditarAulaLabel" aria-hidden="true">
+        <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Estudiantes del Aula</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <h5 class="modal-title" id="modalEditarAulaLabel">Editar Aula</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>Apellidos</th>
-                                <th>Nombres</th>
-                                <th>Puntaje</th>
-                            </tr>
-                        </thead>
-                        <tbody id="tablaEstudiantes"></tbody>
-                    </table>
+                    <form id="formEditarAula">
+                        <div class="form-group">
+                            <label for="editarNombreAula">Nombre del Aula</label>
+                            <input type="text" class="form-control" id="editarNombreAula" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Confirmación para Eliminar Aula -->
+    <div class="modal fade" id="modalConfirmarEliminacion" tabindex="-1" aria-labelledby="modalConfirmarEliminacionLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalConfirmarEliminacionLabel">Confirmar Eliminación</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    ¿Estás seguro de que deseas eliminar esta aula?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                    <button type="button" class="btn btn-danger" id="confirmarEliminacion">Sí</button>
                 </div>
             </div>
         </div>
@@ -60,6 +80,6 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="students-board.js"></script>
+    <script src="../js/students-board.js"></script>
 </body>
 </html>

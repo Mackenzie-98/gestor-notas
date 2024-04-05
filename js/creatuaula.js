@@ -8,11 +8,18 @@ document.addEventListener('DOMContentLoaded', function () {
         aulas.forEach((aula, index) => {
             listaAulas.appendChild(crearElementoAula(aula, index));
         });
+        
+        // Mostrar la lista de estudiantes del aula seleccionada al cargar las aulas
+        if (currentAulaIndex !== null) {
+            actualizarListaEstudiantes();
+        }
     }
+    
 
     function crearElementoAula(aula, index) {
         const li = document.createElement('li');
-        li.className = 'list-group-item d-flex justify-content-between align-items-center';
+        li.className = 'list-group-item d-flex justify-content-between align-items-center clickable'; // Agregamos la clase 'clickable' para hacer el elemento cliclable
+        li.addEventListener('click', () => seleccionarAula(index)); // Agregamos el evento de clic para seleccionar el aula
 
         const texto = document.createElement('span');
         texto.textContent = aula.nombre;
@@ -42,6 +49,29 @@ document.addEventListener('DOMContentLoaded', function () {
         li.appendChild(div);
         return li;
     }
+
+    function seleccionarAula(index) {
+        currentAulaIndex = index;
+        const listaAulas = document.getElementById('listaAulas');
+        listaAulas.querySelectorAll('.list-group-item').forEach((aula, i) => {
+            if (i !== index) {
+                aula.classList.add('inactive');
+            } else {
+                aula.classList.remove('inactive');
+            }
+        });
+        // Aquí se llama a la función para mostrar la lista de estudiantes del aula seleccionada
+        mostrarListaEstudiantes(index);
+    }
+    
+    function mostrarListaEstudiantes(indexAula) {
+        currentAulaIndex = indexAula;
+        $('#modalListaEstudiantes').modal('show');
+        // Aquí actualizas la lista de estudiantes del aula actual
+        actualizarListaEstudiantes();
+    }
+    
+
 
     function mostrarModalConfirmacion(index) {
         $('#modalConfirmarEliminacion').modal('show');
@@ -87,23 +117,36 @@ document.addEventListener('DOMContentLoaded', function () {
         $('#modalAgregarEstudiantes').modal('show');
         actualizarListaEstudiantes();
     }
+    let estudiantesAulaActual = []; // Variable global para almacenar la lista de estudiantes del aula actual
 
     function agregarEstudiante(e) {
         e.preventDefault();
+        const puntaje = parseFloat($('#puntaje').val());
+        const nota = (puntaje / 100).toFixed(2);
+    
         const estudiante = {
             primerApellido: $('#primerApellido').val(),
             segundoApellido: $('#segundoApellido').val(),
             primerNombre: $('#primerNombre').val(),
             segundoNombre: $('#segundoNombre').val(),
-            puntaje: $('#puntaje').val(),
+            puntaje: puntaje,
+            nota: nota,
         };
-
+    
         aulas[currentAulaIndex].estudiantes.push(estudiante);
         localStorage.setItem('aulas', JSON.stringify(aulas));
+    
+        // Guarda la lista de estudiantes del aula actual en la variable global
+        estudiantesAulaActual = aulas[currentAulaIndex].estudiantes;
+    
         $('#formAgregarEstudiante').find("input[type=text], input[type=number]").val("");
         actualizarListaEstudiantes();
     }
-
+    
+    // La función actualizarListaEstudiantes se mantiene igual
+    
+    // El resto de tu código permanece sin cambios
+        
     function actualizarListaEstudiantes() {
         const listaEstudiantes = document.getElementById('listaEstudiantes');
         listaEstudiantes.innerHTML = '';
@@ -117,13 +160,14 @@ document.addEventListener('DOMContentLoaded', function () {
                     <td>${estudiante.primerNombre}</td>
                     <td>${estudiante.segundoNombre}</td>
                     <td>${estudiante.puntaje}</td>
+                    <td>${estudiante.nota}</td>
                     <td><!-- Aquí puedes agregar acciones si lo deseas --></td>
                 `;
                 listaEstudiantes.appendChild(tr);
             });
         }
     }
-
+    
     
 
     document.getElementById('formCrearAula').addEventListener('submit', function (e) {

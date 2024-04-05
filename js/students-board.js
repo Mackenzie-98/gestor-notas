@@ -1,10 +1,10 @@
 document.addEventListener('DOMContentLoaded', function() {
     const aulas = JSON.parse(localStorage.getItem('aulas')) || [];
-    const aulasContainer = document.getElementById('aulasContainer');
+    const listaAulas = document.getElementById('listaAulas');
 
     // Verificar si hay aulas almacenadas
     if (!aulas.length) {
-        aulasContainer.innerHTML = '<p class="text-center">No hay aulas creadas aún.</p>';
+        listaAulas.innerHTML = '<p class="text-center">No hay aulas creadas aún.</p>';
         return;
     }
 
@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <a href="#" class="btn btn-primary" onclick="mostrarEstudiantes(${index})">Ver Estudiantes</a>
             </div>
         `;
-        aulasContainer.appendChild(card);
+        listaAulas.appendChild(card);
     });
 });
 
