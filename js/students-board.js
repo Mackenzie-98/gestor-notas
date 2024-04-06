@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const aulas = JSON.parse(localStorage.getItem('aulas')) || [];
     const listaAulas = document.getElementById('listaAulas');
 
@@ -25,9 +25,10 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function mostrarEstudiantes(index) {
-    const aulas = JSON.parse(localStorage.getItem('aulas')) || [];
-    const aula = aulas[index];
-    alert(`Estudiantes en ${aula.nombre}: ${aula.estudiantes.length}`);
-    // Implementa la lógica para mostrar los detalles de los estudiantes
-    // Esto puede incluir mostrar un modal con la lista de estudiantes
+    // Guardar el índice del aula seleccionada en localStorage
+    localStorage.setItem('selectedAulaIndex', index);
+
+    // Redirigir a la página de visualización de estudiantes del aula
+    window.location.href = 'view-students-aula.html';
 }
+

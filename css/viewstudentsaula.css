@@ -1,0 +1,39 @@
+body,
+html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+header {
+    color: #FBB048;
+    background-color: #152250;
+    text-align: center;
+    padding: 0.8em 0;
+}
+
+footer {
+    position: fixed;
+    background-color: #152250;
+    text-align: center;
+    text-align: center;
+    bottom: 0;
+    width: 100%;
+    color: white;
+    text-align: center;
+}
+
+#homeButton {
+    width: 5vh;
+    /* O el tamaño que desees */
+    height: auto;
+    position: absolute;
+    /* Posición absoluta respecto al encabezado */
+    top: 2vh;
+    /* Ajuste el valor para alinear verticalmente */
+    left: 2vh;
+    /* Ajuste el valor para alinear horizontalmente */
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    /* Suaviza la transición al pasar el cursor */
+}

@@ -8,13 +8,13 @@ document.addEventListener('DOMContentLoaded', function () {
         aulas.forEach((aula, index) => {
             listaAulas.appendChild(crearElementoAula(aula, index));
         });
-        
+
         // Mostrar la lista de estudiantes del aula seleccionada al cargar las aulas
         if (currentAulaIndex !== null) {
             actualizarListaEstudiantes();
         }
     }
-    
+
 
     function crearElementoAula(aula, index) {
         const li = document.createElement('li');
@@ -63,20 +63,20 @@ document.addEventListener('DOMContentLoaded', function () {
         // Aquí se llama a la función para mostrar la lista de estudiantes del aula seleccionada
         mostrarListaEstudiantes(index);
     }
-    
+
     function mostrarListaEstudiantes(indexAula) {
         currentAulaIndex = indexAula;
         $('#modalListaEstudiantes').modal('show');
         // Aquí actualizas la lista de estudiantes del aula actual
         actualizarListaEstudiantes();
     }
-    
+
 
 
     function mostrarModalConfirmacion(index) {
         $('#modalConfirmarEliminacion').modal('show');
 
-        $('#confirmarEliminacion').off('click').on('click', function() {
+        $('#confirmarEliminacion').off('click').on('click', function () {
             eliminarAula(index);
             $('#modalConfirmarEliminacion').modal('hide');
         });
@@ -123,7 +123,7 @@ document.addEventListener('DOMContentLoaded', function () {
         e.preventDefault();
         const puntaje = parseFloat($('#puntaje').val());
         const nota = (puntaje / 100).toFixed(2);
-    
+
         const estudiante = {
             primerApellido: $('#primerApellido').val(),
             segundoApellido: $('#segundoApellido').val(),
@@ -132,21 +132,21 @@ document.addEventListener('DOMContentLoaded', function () {
             puntaje: puntaje,
             nota: nota,
         };
-    
+
         aulas[currentAulaIndex].estudiantes.push(estudiante);
         localStorage.setItem('aulas', JSON.stringify(aulas));
-    
+
         // Guarda la lista de estudiantes del aula actual en la variable global
         estudiantesAulaActual = aulas[currentAulaIndex].estudiantes;
-    
+
         $('#formAgregarEstudiante').find("input[type=text], input[type=number]").val("");
         actualizarListaEstudiantes();
     }
-    
+
     // La función actualizarListaEstudiantes se mantiene igual
-    
+
     // El resto de tu código permanece sin cambios
-        
+
     function actualizarListaEstudiantes() {
         const listaEstudiantes = document.getElementById('listaEstudiantes');
         listaEstudiantes.innerHTML = '';
@@ -167,8 +167,8 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         }
     }
-    
-    
+
+
 
     document.getElementById('formCrearAula').addEventListener('submit', function (e) {
         e.preventDefault();
