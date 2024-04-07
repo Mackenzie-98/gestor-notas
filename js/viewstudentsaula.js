@@ -10,9 +10,9 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     const comportamientosGuardados = JSON.parse(localStorage.getItem('comportamientos') || '[]');
-comportamientosGuardados.forEach((comportamiento, index) => {
-    agregarBotonComportamiento(comportamiento.motivo, comportamiento.puntos, false, index); // Asumiendo que modificas la función para aceptar un índice o identificador único
-});
+    comportamientosGuardados.forEach((comportamiento, index) => {
+        agregarBotonComportamiento(comportamiento.motivo, comportamiento.puntos, false, index);
+    });
 
     document.getElementById('formAgregarComportamiento').addEventListener('submit', function(event) {
         event.preventDefault();
@@ -34,12 +34,17 @@ comportamientosGuardados.forEach((comportamiento, index) => {
         boton.innerHTML = `<span class="badge badge-light">${puntos >= 0 ? '+' : ''}${puntos} puntos</span> ${motivo}`;
     
         boton.onclick = function() {
-            if (!estudianteSeleccionado) {
-                alert('Por favor, seleccione un estudiante.');
+            if (estudiantesSeleccionados.length === 0) {
+                alert('Por favor, seleccione al menos un estudiante.');
                 return;
             }
             const confirmMotivo = prompt('Ingrese el motivo del cambio de puntaje:'); // Solicita motivo si es necesario
-            modificarPuntaje(estudianteSeleccionado, puntos, confirmMotivo || motivo);
+            if (!confirmMotivo) {
+                alert('Motivo del cambio de puntaje es requerido.');
+                return;
+            }
+        
+            modificarPuntaje(puntos, confirmMotivo || motivo);
         };
     
         // Botón para eliminar el comportamiento
@@ -74,6 +79,7 @@ comportamientosGuardados.forEach((comportamiento, index) => {
     }
     
 
+    
     const tabla = document.getElementById('tablaEstudiantes');
     estudiantes.forEach((estudiante, index) => {
         if (!estudiante.historial) {
@@ -98,29 +104,47 @@ comportamientosGuardados.forEach((comportamiento, index) => {
         fila.setAttribute('data-id', estudiante.id);
 
         fila.addEventListener('click', function () {
-            estudianteSeleccionado = estudiante;
-            document.querySelectorAll('#tablaEstudiantes tr').forEach(row => row.classList.remove('table-primary'));
-            fila.classList.add('table-primary');
+            const estudianteId = estudiante.id;
+            const selectedIndex = estudiantesSeleccionados.findIndex(sel => sel.id === estudianteId);
+        
+            
+        
+            if (selectedIndex === -1) {
+                estudiantesSeleccionados.push(estudiante);
+                fila.classList.add('table-primary');
+            } else {
+                estudiantesSeleccionados.splice(selectedIndex, 1);
+                fila.classList.remove('table-primary');
+            }
         });
 
+        
+        
     });
 
-    function modificarPuntaje(estudiante, puntos, motivo) {
-        // Asegúrate de que el estudiante y motivo son válidos
-        if (!estudiante || !motivo) {
-            alert('Por favor, asegúrese de que ha seleccionado un estudiante y ha ingresado un motivo.');
+    function modificarPuntaje(puntos, motivo) {
+        if (estudiantesSeleccionados.length === 0) {
+            alert('Por favor, seleccione al menos un estudiante.');
             return;
         }
+
+       
     
-        // Incrementa el puntaje basado en el cambio proporcionado y recalcula la nota
-        estudiante.puntaje += puntos;
-        estudiante.nota = (estudiante.puntaje / 100).toFixed(2);
+        estudiantesSeleccionados.forEach(estudiante => {
+            estudiante.puntaje += puntos;
+            estudiante.nota = (estudiante.puntaje / 100).toFixed(2);
+            estudiante.historial.push({
+                cambio: puntos,
+                motivo: motivo,
+                fecha: new Date().toLocaleString()
+            });
     
-        // Registra el cambio en el historial del estudiante
-        estudiante.historial.push({
-            cambio: puntos,
-            motivo: motivo,
-            fecha: new Date().toLocaleString()
+            // Encuentra y actualiza la fila correspondiente para cada estudiante
+            const filaEstudiante = document.querySelector(`tr[data-id='${estudiante.id}']`);
+            if (filaEstudiante) {
+                filaEstudiante.cells[5].textContent = estudiante.puntaje; // Actualiza el puntaje en la tabla
+                filaEstudiante.cells[6].textContent = estudiante.nota; // Actualiza la nota en la tabla
+            }
         });
     
         // Actualiza el almacenamiento local con el cambio
@@ -131,24 +155,29 @@ comportamientosGuardados.forEach((comportamiento, index) => {
     
 
     window.modificarPuntaje = function (cambio) {
-        if (!estudianteSeleccionado) {
-            alert('Por favor, seleccione un estudiante.');
+        if (estudiantesSeleccionados.length === 0) {
+            alert('Por favor, seleccione al menos un estudiante.');
             return;
         }
     
         const motivo = prompt('Ingrese el motivo del cambio de puntaje:');
         if (!motivo) return;
     
-        // Incrementa el puntaje basado en el cambio proporcionado
-        estudianteSeleccionado.puntaje += cambio;
-        // Calcula la nueva nota dividiendo el puntaje actualizado por 100
-        estudianteSeleccionado.nota = (estudianteSeleccionado.puntaje / 100).toFixed(2);
-    
-        // Registra el cambio en el historial del estudiante
-        estudianteSeleccionado.historial.push({
-            cambio,
-            motivo,
-            fecha: new Date().toLocaleString()
+        estudiantesSeleccionados.forEach(estudiante => {
+            estudiante.puntaje += puntos;
+            estudiante.nota = (estudiante.puntaje / 100).toFixed(2);
+            estudiante.historial.push({
+                cambio: puntos,
+                motivo: motivo,
+                fecha: new Date().toLocaleString()
+            });
+        
+            // Encuentra y actualiza la fila correspondiente para cada estudiante
+            const filaEstudiante = document.querySelector(`tr[data-id='${estudiante.id}']`);
+            if (filaEstudiante) {
+                filaEstudiante.cells[5].textContent = estudiante.puntaje; // Actualiza el puntaje en la tabla
+                filaEstudiante.cells[6].textContent = estudiante.nota; // Actualiza la nota en la tabla
+            }
         });
     
         // Actualiza el almacenamiento local con el cambio
