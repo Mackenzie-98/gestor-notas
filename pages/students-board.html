@@ -6,6 +6,7 @@
     <title>Tablero de Estudiantes</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" href="../css/students-board.css">
     <style>
         .btn-icon {
             margin-left: 5px;
@@ -23,9 +24,45 @@
             display: flex;
             gap: 10px; /* Espaciado entre botones */
         }
+
+        body {
+        background-color: #b3d9ff; /* Color de fondo azul clarito */
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        }
+
+        body, html {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+    }
+
+    /* Estilos personalizados para el título */
+    .titulo-aulas {
+        text-align: center;
+        margin: 2rem 0; /* Ajusta el espaciado vertical según necesites */
+        color: #0056b3; /* Cambia al color que prefieras */
+        font-size: 48px; /* Tamaño de fuente grande */
+        font-weight: bold; /* Fuente en negrita */
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.2); /* Sombra suave para dar profundidad */
+    }
+
     </style>
 </head>
 <body>
+
+    <header>
+        <img src="../assets/homePage.png" alt="Inicio" id="homeButton" style="cursor:pointer;" />
+
+        <h1>Software Educativo - Rutas de Aprendizaje</h1>
+
+    </header>
+
+    <div class="my-5">
+        <h2 class="titulo-aulas">AULAS</h2>
+    </div>
+
     <div class="container">
         <!-- Lista de aulas creadas -->
         <ul id="listaAulas" class="list-group mt-3">
@@ -33,49 +70,8 @@
         </ul>
     </div>
 
-    <!-- Modal para editar aula -->
-    <div class="modal fade" id="modalEditarAula" tabindex="-1" aria-labelledby="modalEditarAulaLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="modalEditarAulaLabel">Editar Aula</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form id="formEditarAula">
-                        <div class="form-group">
-                            <label for="editarNombreAula">Nombre del Aula</label>
-                            <input type="text" class="form-control" id="editarNombreAula" required>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <!-- Modal de Confirmación para Eliminar Aula -->
-    <div class="modal fade" id="modalConfirmarEliminacion" tabindex="-1" aria-labelledby="modalConfirmarEliminacionLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="modalConfirmarEliminacionLabel">Confirmar Eliminación</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    ¿Estás seguro de que deseas eliminar esta aula?
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-                    <button type="button" class="btn btn-danger" id="confirmarEliminacion">Sí</button>
-                </div>
-            </div>
-        </div>
-    </div>
+
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>

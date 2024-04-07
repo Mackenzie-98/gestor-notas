@@ -7,13 +7,15 @@
     <title>Dashboard - Gestor de Notas</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+
     <style>
+        
         body {
-            background-color: #f4f7f6;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
+        background-color: #b3d9ff; /* Color de fondo azul clarito */
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
         }
 
         .card {
@@ -32,59 +34,81 @@
         }
 
         .fa-icon {
-            margin-bottom: 10px;
+            margin-bottom: 100px;
         }
     </style>
 </head>
 
 <body>
-    <div class="container">
-        <div class="row justify-content-center">
-            <!-- Gestionar Estudiantes -->
-            <div class="col-md-3">
-                <div class="card text-white bg-primary mb-3" onclick="location.href='gestionar_estudiantes.html';">
-                    <div class="card-body text-center">
-                        <i class="fas fa-users fa-2x fa-icon"></i>
-                        <h5 class="card-title">Gestionar Estudiantes</h5>
-                        <p class="card-text">Cargar, editar y eliminar estudiantes en los cursos.</p>
-                    </div>
-                </div>
-            </div>
 
-            <!-- Crea tu Aula de Clases -->
-            <div class="col-md-3">
-                <div class="card text-white bg-secondary mb-3 aula-card"> <!-- Asegúrate de tener esta clase aquí -->
-                    <div class="card-body text-center">
-                        <i class="fas fa-cogs fa-2x fa-icon"></i>
-                        <h5 class="card-title">Crea tu Aula de Clases</h5>
-                        <p class="card-text">Configura y personaliza tu aula virtual.</p>
-                    </div>
-                </div>
-            </div>
+ 
+    <header>
+        <img src="../assets/homePage.png" alt="Inicio" id="homeButton" style="cursor:pointer;" />
+    
+        <h1>Software Educativo - Rutas de Aprendizaje</h1>
+    
+    </header>
 
-            <!-- Estudiantes por Curso -->
-            <div class="col-md-3">
-                <div class="card text-white bg-success mb-3 estudiantes-card">
-                    <div class="card-body text-center">
-                        <i class="fas fa-chalkboard-teacher fa-2x fa-icon"></i>
-                        <h5 class="card-title">Estudiantes</h5>
-                        <p class="card-text">Ver y gestionar los estudiantes de un curso específico.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Asistencia -->
-            <div class="col-md-3">
-                <div class="card text-white bg-danger mb-3" onclick="location.href='asistencia.html';">
-                    <div class="card-body text-center">
-                        <i class="fas fa-clipboard-list fa-2x fa-icon"></i>
-                        <h5 class="card-title">Asistencia</h5>
-                        <p class="card-text">Gestiona la asistencia de los estudiantes a los cursos.</p>
+    <div class="my-5">
+        <h2 class="titulo-aulas">HOMEPAGE</h2>
+    </div>
+    
+    <div class="content-center">
+        <div class="container">
+            <div class="row justify-content-center">
+                <!-- Tus cards aquí -->
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <!-- Gestionar Estudiantes -->
+                        <div class="col-md-3">
+                            <div class="card text-white bg-primary mb-3" onclick="location.href='gestionar_estudiantes.html';">
+                                <div class="card-body text-center">
+                                    <i class="fas fa-users fa-2x fa-icon"></i>
+                                    <h5 class="card-title">Gestionar Estudiantes</h5>
+                                    <p class="card-text">Cargar, editar y eliminar estudiantes en los cursos.</p>
+                                </div>
+                            </div>
+                        </div>
+            
+                        <!-- Crea tu Aula de Clases -->
+                        <div class="col-md-3">
+                            <div class="card text-white bg-secondary mb-3 aula-card"> <!-- Asegúrate de tener esta clase aquí -->
+                                <div class="card-body text-center">
+                                    <i class="fas fa-cogs fa-2x fa-icon"></i>
+                                    <h5 class="card-title">Crea tu Aula de Clases</h5>
+                                    <p class="card-text">Crea, configura y personaliza tu aula virtual de estudiantes.</p>
+                                </div>
+                            </div>
+                        </div>
+            
+                        <!-- Estudiantes por Curso -->
+                        <div class="col-md-3">
+                            <div class="card text-white bg-success mb-3 estudiantes-card">
+                                <div class="card-body text-center">
+                                    <i class="fas fa-chalkboard-teacher fa-2x fa-icon"></i>
+                                    <h5 class="card-title">Estudiantes</h5>
+                                    <p class="card-text">Ver y gestionar los estudiantes de un curso específico.</p>
+                                </div>
+                            </div>
+                        </div>
+            
+                        <!-- Asistencia -->
+                        <div class="col-md-3">
+                            <div class="card text-white bg-danger mb-3" onclick="location.href='asistencia.html';">
+                                <div class="card-body text-center">
+                                    <i class="fas fa-clipboard-list fa-2x fa-icon"></i>
+                                    <h5 class="card-title">Asistencia</h5>
+                                    <p class="card-text">Gestiona la asistencia de los estudiantes a los cursos.</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    
 
     <script src="../js/dashboard.js"></script>
 

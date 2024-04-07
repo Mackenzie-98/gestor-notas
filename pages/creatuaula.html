@@ -21,8 +21,11 @@
         }
         .action-buttons {
             display: flex;
-            gap: 10px; /* Espaciado entre botones */
+            gap: 20px; /* Espaciado entre botones */
         }
+        .editarEstudianteBtn, .eliminarEstudianteBtn {
+            margin-right: 10px; /* Ajusta este valor según necesites */
+}
         .list-group-item {
             display: flex;
             justify-content: space-between;
@@ -30,18 +33,148 @@
             transition: transform 0.3s ease-in-out; /* Agregamos transición para la animación */
         }
 
-        .list-group-item.inactive {
-            transform: translateY(50px); /* Desplazamiento hacia abajo */
-            opacity: 0.5; /* Atenuar la opacidad */
+        .table td, .table th {
+    vertical-align: middle;
         }
+
+        /* Ajusta el tamaño mínimo de la celda de acciones */
+        .table td.actions-cell {
+            min-width: 5px; /* Ajusta este valor según sea necesario */
+        }
+
+        .modal-dialog {
+    max-width: 90%; /* O cualquier otro tamaño */
+        }
+
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        header {
+            color: #FBB048;
+            background-color: #152250;
+            text-align: center;
+            padding: 0.8em 0;
+        }
+
+        body {
+            background-color: #b3d9ff; /* Color de fondo azul clarito */
+        }
+
+        footer {
+            position: fixed;
+            background-color: #152250;
+            text-align: center;
+            text-align: center;
+            bottom: 0;
+            width: 100%;
+            color: white;
+            text-align: center;
+        }
+
+        #homeButton {
+            width: 5vh;
+            /* O el tamaño que desees */
+            height: auto;
+            position: absolute;
+            /* Posición absoluta respecto al encabezado */
+            top: 2vh;
+            /* Ajuste el valor para alinear verticalmente */
+            left: 2vh;
+            /* Ajuste el valor para alinear horizontalmente */
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            /* Suaviza la transición al pasar el cursor */
+        }
+
+        .btn-custom {
+            background-color: #1fa1ec; /* Verde */
+            color: white;
+            font-size: 18px;
+            padding: 10px 24px;
+            border: none;
+            border-radius: 25px; /* Bordes redondeados */
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s; /* Transiciones suaves */
+        }
+
+        .btn-custom:hover, .btn-custom:focus {
+            background-color: #44a6df; /* Un verde un poco más oscuro */
+            transform: translateY(-2px); /* Mover ligeramente hacia arriba */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Sombra para dar efecto de elevación */
+        }
+
+        .btn-custom i {
+            margin-right: 8px; /* Espacio entre el icono y el texto */
+        }
+
+        /* Estilos para la lista de aulas */
+        #listaAulas {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .list-group-item {
+            background-color: #f8f9fa; /* Fondo claro */
+            border: 1px solid #ddd; /* Bordes sutiles */
+            border-radius: 5px; /* Bordes redondeados */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px; /* Espaciado entre elementos */
+            padding: 10px 20px; /* Padding generoso para más espacio */
+            transition: background-color 0.3s ease; /* Transición suave del fondo */
+        }
+
+        .list-group-item:hover {
+            background-color: #e2e6ea; /* Cambio de color al pasar el cursor */
+        }
+
+        /* Estilos para los botones dentro de la lista para mantener la coherencia */
+        .list-group-item .btn {
+            padding: 5px 10px; /* Padding reducido para los botones */
+            font-size: 14px; /* Tamaño de fuente más pequeño */
+        }
+
+        /* Iconos de acciones para editar y eliminar con margen */
+        .list-group-item .fas {
+            margin-right: 5px;
+        }
+
+        /* Mejora visual para los textos y separación de botones */
+        .list-group-item-text {
+            flex-grow: 1;
+            padding-right: 20px; /* Espacio antes de los botones */
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 10px; /* Espaciado entre botones */
+        }
+
+
     </style>
 </head>
 <body>
+
+    <header>
+        <img src="../assets/homePage.png" alt="Inicio" id="homeButton" style="cursor:pointer;" />
+    
+        <h1>Software Educativo - Rutas de Aprendizaje</h1>
+    
+    </header>
+
+
     <div class="container">
         <!-- Botón para activar el modal de crear aula -->
-        <button type="button" class="btn btn-primary mt-5" data-toggle="modal" data-target="#modalCrearAula">
-            Crea tu Aula
+        <!-- Botón para activar el modal de crear aula con clases adicionales de Bootstrap -->
+        <button type="button" class="btn btn-lg btn-success mt-5 shadow" data-toggle="modal" data-target="#modalCrearAula" style="border-radius: 20px;">
+            <i class="fas fa-plus-circle"></i> Crea tu Aula
         </button>
+
 
         <!-- Modal para crear aula -->
         <div class="modal fade" id="modalCrearAula" tabindex="-1" aria-labelledby="modalCrearAulaLabel" aria-hidden="true">

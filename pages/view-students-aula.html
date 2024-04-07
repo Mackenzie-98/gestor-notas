@@ -43,15 +43,39 @@
             </div>
             <div class="col-lg-4">
                 <div class="panel">
-                    <h2>Panel Admin</h2>
-                    <button class="btn btn-success mb-2" onclick="modificarPuntaje(5)">Sumar 5</button>
-                    <button class="btn btn-warning mb-2" onclick="modificarPuntaje(-5)">Restar 5</button>
-                    <button class="btn btn-success mb-2" onclick="modificarPuntaje(10)">Sumar 10</button>
-                    <button class="btn btn-warning mb-2" onclick="modificarPuntaje(-10)">Restar 10</button>
+                    <h2 class="my-3" style="color: #fbb048; font-size: 24px;">Panel Admin</h2>
+                    <button class="btn btn-primary mb-2 shadow-lg" data-toggle="modal" data-target="#modalAgregarComportamiento">Agregar comportamiento</button>
+
                 </div>
             </div>
         </div>
     </div>
+
+    <div id="modalAgregarComportamiento" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Agregar Comportamiento</h5>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <form id="formAgregarComportamiento">
+                        <div class="form-group">
+                            <label for="motivo">Motivo:</label>
+                            <input type="text" class="form-control" id="motivo" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="puntos">Agregar Puntos:</label>
+                            <input type="number" class="form-control" id="puntos" required>
+                        </div>
+                        <button type="submit" class="btn btn-success">Agregar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
     <div id="modalHistorial" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">

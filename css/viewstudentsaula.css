@@ -37,3 +37,39 @@ footer {
     transition: transform 0.3s ease;
     /* Suaviza la transición al pasar el cursor */
 }
+
+
+.panel {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.boton-comportamiento {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%; /* O ajusta al ancho deseado */
+    margin-bottom: 10px; /* Ajusta el espaciado entre botones */
+}
+
+.boton-comportamiento .badge {
+    margin-right: 5px; /* Espaciado entre el badge de puntos y el motivo */
+}
+
+.boton-comportamiento-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 10px; /* Ajusta el espaciado entre botones */
+}
+
+.boton-comportamiento {
+    flex-grow: 1; /* Ocupa todo el espacio disponible */
+}
+
+.boton-comportamiento + .btn {
+    margin-left: 10px; /* Espaciado entre el botón de comportamiento y el botón de eliminar */
+}
+
