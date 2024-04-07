@@ -1,8 +1,9 @@
 document.addEventListener('DOMContentLoaded', function () {
+
     const selectedAulaIndex = localStorage.getItem('selectedAulaIndex');
     const aulas = JSON.parse(localStorage.getItem('aulas')) || [];
     let estudiantes = (aulas[selectedAulaIndex] || {}).estudiantes || [];
-    let estudianteSeleccionado = null;
+    console.log(estudiantes)
     let estudiantesSeleccionados = [];
 
     function actualizarAlmacenamiento() {
@@ -14,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function () {
         agregarBotonComportamiento(comportamiento.motivo, comportamiento.puntos, false, index);
     });
 
-    document.getElementById('formAgregarComportamiento').addEventListener('submit', function(event) {
+    document.getElementById('formAgregarComportamiento').addEventListener('submit', function (event) {
         event.preventDefault();
         const motivo = document.getElementById('motivo').value;
         const puntos = parseInt(document.getElementById('puntos').value, 10);
@@ -28,12 +29,12 @@ document.addEventListener('DOMContentLoaded', function () {
         const panelAdmin = document.querySelector('.panel');
         const contenedor = document.createElement('div');
         contenedor.className = 'd-flex justify-content-between align-items-center boton-comportamiento-container';
-    
+
         const boton = document.createElement('button');
         boton.className = `btn ${puntos >= 0 ? 'btn-outline-success' : 'btn-outline-danger'} mb-2 boton-comportamiento`;
         boton.innerHTML = `<span class="badge badge-light">${puntos >= 0 ? '+' : ''}${puntos} puntos</span> ${motivo}`;
-    
-        boton.onclick = function() {
+
+        boton.onclick = function () {
             if (estudiantesSeleccionados.length === 0) {
                 alert('Por favor, seleccione al menos un estudiante.');
                 return;
@@ -43,33 +44,33 @@ document.addEventListener('DOMContentLoaded', function () {
                 alert('Motivo del cambio de puntaje es requerido.');
                 return;
             }
-        
+
             modificarPuntaje(puntos, confirmMotivo || motivo);
         };
-    
+
         // Botón para eliminar el comportamiento
-            const botonEliminar = document.createElement('button');
-            botonEliminar.className = 'btn btn-outline-danger ml-2';
-            botonEliminar.innerHTML = '<i class="fas fa-trash"></i>';
+        const botonEliminar = document.createElement('button');
+        botonEliminar.className = 'btn btn-outline-danger ml-2';
+        botonEliminar.innerHTML = '<i class="fas fa-trash"></i>';
 
-            botonEliminar.onclick = function() {
-                // Elimina el comportamiento de la interfaz
-                panelAdmin.removeChild(contenedor);
+        botonEliminar.onclick = function () {
+            // Elimina el comportamiento de la interfaz
+            panelAdmin.removeChild(contenedor);
 
-                // Encuentra y elimina el comportamiento de localStorage
-                const comportamientos = JSON.parse(localStorage.getItem('comportamientos') || '[]');
-                const index = comportamientos.findIndex(c => c.motivo === motivo && c.puntos === puntos);
-                if (index > -1) {
-                    comportamientos.splice(index, 1);
-                    localStorage.setItem('comportamientos', JSON.stringify(comportamientos));
-                }
-            };
-        
-    
+            // Encuentra y elimina el comportamiento de localStorage
+            const comportamientos = JSON.parse(localStorage.getItem('comportamientos') || '[]');
+            const index = comportamientos.findIndex(c => c.motivo === motivo && c.puntos === puntos);
+            if (index > -1) {
+                comportamientos.splice(index, 1);
+                localStorage.setItem('comportamientos', JSON.stringify(comportamientos));
+            }
+        };
+
+
         contenedor.appendChild(boton);
         contenedor.appendChild(botonEliminar);
         panelAdmin.appendChild(contenedor);
-    
+
         if (guardar) {
             // Guarda el comportamiento en localStorage para persistencia entre recargas
             const comportamientos = JSON.parse(localStorage.getItem('comportamientos') || '[]');
@@ -77,10 +78,11 @@ document.addEventListener('DOMContentLoaded', function () {
             localStorage.setItem('comportamientos', JSON.stringify(comportamientos));
         }
     }
-    
 
-    
+
+    console.log(estudiantes)
     const tabla = document.getElementById('tablaEstudiantes');
+
     estudiantes.forEach((estudiante, index) => {
         if (!estudiante.historial) {
             estudiante.historial = []; // Asegurarse de que cada estudiante tenga un historial
@@ -104,11 +106,9 @@ document.addEventListener('DOMContentLoaded', function () {
         fila.setAttribute('data-id', estudiante.id);
 
         fila.addEventListener('click', function () {
-            const estudianteId = estudiante.id;
+            const estudianteId = estudiante.primerApellido + estudiante.segundoApellido + estudiante.primerNombre + estudiante.segundoNombre;
             const selectedIndex = estudiantesSeleccionados.findIndex(sel => sel.id === estudianteId);
-        
-            
-        
+
             if (selectedIndex === -1) {
                 estudiantesSeleccionados.push(estudiante);
                 fila.classList.add('table-primary');
@@ -118,8 +118,8 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
 
-        
-        
+
+
     });
 
     function modificarPuntaje(puntos, motivo) {
@@ -128,8 +128,8 @@ document.addEventListener('DOMContentLoaded', function () {
             return;
         }
 
-       
-    
+
+
         estudiantesSeleccionados.forEach(estudiante => {
             estudiante.puntaje += puntos;
             estudiante.nota = (estudiante.puntaje / 100).toFixed(2);
@@ -138,7 +138,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 motivo: motivo,
                 fecha: new Date().toLocaleString()
             });
-    
+
             // Encuentra y actualiza la fila correspondiente para cada estudiante
             const filaEstudiante = document.querySelector(`tr[data-id='${estudiante.id}']`);
             if (filaEstudiante) {
@@ -146,23 +146,23 @@ document.addEventListener('DOMContentLoaded', function () {
                 filaEstudiante.cells[6].textContent = estudiante.nota; // Actualiza la nota en la tabla
             }
         });
-    
+
         // Actualiza el almacenamiento local con el cambio
         actualizarAlmacenamiento();
         // Recargar la página para reflejar los cambios en la UI
         location.reload();
     }
-    
+
 
     window.modificarPuntaje = function (cambio) {
         if (estudiantesSeleccionados.length === 0) {
             alert('Por favor, seleccione al menos un estudiante.');
             return;
         }
-    
+
         const motivo = prompt('Ingrese el motivo del cambio de puntaje:');
         if (!motivo) return;
-    
+
         estudiantesSeleccionados.forEach(estudiante => {
             estudiante.puntaje += puntos;
             estudiante.nota = (estudiante.puntaje / 100).toFixed(2);
@@ -171,7 +171,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 motivo: motivo,
                 fecha: new Date().toLocaleString()
             });
-        
+
             // Encuentra y actualiza la fila correspondiente para cada estudiante
             const filaEstudiante = document.querySelector(`tr[data-id='${estudiante.id}']`);
             if (filaEstudiante) {
@@ -179,7 +179,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 filaEstudiante.cells[6].textContent = estudiante.nota; // Actualiza la nota en la tabla
             }
         });
-    
+
         // Actualiza el almacenamiento local con el cambio
         actualizarAlmacenamiento();
         // Recarga la página para reflejar los cambios en la UI
