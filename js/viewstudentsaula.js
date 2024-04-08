@@ -106,19 +106,24 @@ document.addEventListener('DOMContentLoaded', function () {
         fila.setAttribute('data-id', estudiante.id);
 
         fila.addEventListener('click', function () {
+            // Genera un identificador único para el estudiante si aún no se ha hecho.
             const estudianteId = estudiante.primerApellido + estudiante.segundoApellido + estudiante.primerNombre + estudiante.segundoNombre;
+        
+            // Encuentra el índice del estudiante en el array de seleccionados, basándose en su id único.
             const selectedIndex = estudiantesSeleccionados.findIndex(sel => sel.id === estudianteId);
-
+        
             if (selectedIndex === -1) {
+                // Si el estudiante no está en el array de seleccionados, agrégalo.
+                estudiante.id = estudianteId; // Asegúrate de que el estudiante tenga un id.
                 estudiantesSeleccionados.push(estudiante);
                 fila.classList.add('table-primary');
             } else {
+                // Si el estudiante ya está seleccionado, elimínalo del array.
                 estudiantesSeleccionados.splice(selectedIndex, 1);
                 fila.classList.remove('table-primary');
             }
         });
-
-
+        
 
     });
 
