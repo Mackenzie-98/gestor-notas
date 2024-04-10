@@ -73,3 +73,23 @@ footer {
     margin-left: 10px; /* Espaciado entre el botón de comportamiento y el botón de eliminar */
 }
 
+#modalHistorial .modal-content {
+    border-radius: 0.5rem; /* Bordes redondeados para el modal */
+}
+
+#modalHistorial .list-group-item {
+    border-left: none;
+    border-right: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1.25rem;
+}
+
+#modalHistorial .list-group-item:nth-child(odd) {
+    background-color: #f8f9fa; /* Un suave color de fondo para los ítems impares */
+}
+
+#modalHistorial .modal-body {
+    padding: 0; /* Elimina el padding predeterminado para alinear el borde de la lista con el modal */
+}
