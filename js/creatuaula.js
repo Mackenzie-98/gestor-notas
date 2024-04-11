@@ -121,10 +121,49 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     let estudiantesAulaActual = []; // Variable global para almacenar la lista de estudiantes del aula actual
 
+
+// Función para procesar los datos copiados y agregar los estudiantes al sistema
+function procesarDatosCopiados(datos) {
+    // Supongamos que los datos copiados están separados por filas y columnas
+    const filas = datos.split('\n');
+    const estudiantes = [];
+    filas.forEach(fila => {
+        const columnas = fila.split('\t'); // Supongamos que las columnas están separadas por tabulaciones
+        const estudiante = {
+            id: columnas[0] + columnas[1] + columnas[2] + columnas[3],
+            primerApellido: columnas[0], // Ajusta esto según la posición de los datos en tu copia de Excel
+            segundoApellido: columnas[1],
+            primerNombre: columnas[2],
+            segundoNombre: columnas[3],
+            puntaje: parseFloat(columnas[4]),
+            nota: (parseFloat(columnas[4]) / 100).toFixed(2),
+        };
+        estudiantes.push(estudiante);
+    });
+
+    // Agregar cada estudiante al aula actual
+    estudiantes.forEach(estudiante => {
+        aulas[currentAulaIndex].estudiantes.push(estudiante);
+    });
+
+    // Actualizar el almacenamiento local y la lista de estudiantes
+    localStorage.setItem('aulas', JSON.stringify(aulas));
+    actualizarListaEstudiantes();
+}
+
+// Escuchar el evento de pegado en algún lugar de tu aplicación (por ejemplo, en el body)
+document.body.addEventListener('paste', function(e) {
+    const datosPegados = e.clipboardData.getData('text');
+    procesarDatosCopiados(datosPegados);
+});
+
+
+
     function agregarEstudiante(e) {
         e.preventDefault(); // Evita el comportamiento por defecto del formulario.
     
         const estudianteDatos = {
+            id: $('#idestudiante').val(),
             primerApellido: $('#primerApellido').val(),
             segundoApellido: $('#segundoApellido').val(),
             primerNombre: $('#primerNombre').val(),
@@ -203,6 +242,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function editarEstudiante(indexEstudiante) {
         const estudianteSeleccionado = aulas[currentAulaIndex].estudiantes[indexEstudiante];
         // Llenar el formulario con los datos del estudiante
+        $('#idestudiante').val(estudianteSeleccionado.id);
         $('#primerApellido').val(estudianteSeleccionado.primerApellido);
         $('#segundoApellido').val(estudianteSeleccionado.segundoApellido);
         $('#primerNombre').val(estudianteSeleccionado.primerNombre);
