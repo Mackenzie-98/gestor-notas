@@ -15,6 +15,8 @@ document.addEventListener('DOMContentLoaded', function () {
         agregarBotonComportamiento(comportamiento.motivo, comportamiento.puntos, false, index);
     });
 
+    
+
     document.getElementById('formAgregarComportamiento').addEventListener('submit', function (event) {
         event.preventDefault();
         const motivo = document.getElementById('motivo').value;
@@ -23,6 +25,7 @@ document.addEventListener('DOMContentLoaded', function () {
         agregarBotonComportamiento(motivo, puntos, true);
 
         $('#modalAgregarComportamiento').modal('hide'); // Cierra el modal
+        
     });
 
     function agregarBotonComportamiento(motivo, puntos, guardar) {
@@ -45,6 +48,26 @@ document.addEventListener('DOMContentLoaded', function () {
                 return;
             }
 
+            modificarPuntaje(puntos, confirmMotivo || motivo);
+        };
+
+        function mostrarAlerta(mensaje) {
+            const modalBody = document.querySelector('#alertModal .modal-body');
+            modalBody.textContent = mensaje; // Establece el mensaje de la alerta
+            $('#alertModal').modal('show'); // Usa jQuery para mostrar el modal
+        }
+
+        boton.onclick = function () {
+            if (estudiantesSeleccionados.length === 0) {
+                mostrarAlerta('Por favor, seleccione al menos un estudiante.');
+                return;
+            }
+            const confirmMotivo = prompt('Ingrese el motivo del cambio de puntaje:'); // Solicita motivo si es necesario
+            if (!confirmMotivo) {
+                mostrarAlerta('Motivo del cambio de puntaje es requerido.');
+                return;
+            }
+        
             modificarPuntaje(puntos, confirmMotivo || motivo);
         };
 
@@ -96,6 +119,7 @@ document.addEventListener('DOMContentLoaded', function () {
         fila.insertCell(4).innerHTML = estudiante.segundoNombre;
         fila.insertCell(5).innerHTML = estudiante.puntaje;
         fila.insertCell(6).innerHTML = estudiante.nota; // Asumiendo que la nota ya está calculada
+
         let botonHistorial = document.createElement('button');
         botonHistorial.textContent = 'Ver Historial';
         botonHistorial.className = 'btn btn-info btn-sm';

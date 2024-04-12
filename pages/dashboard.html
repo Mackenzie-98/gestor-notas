@@ -12,7 +12,7 @@
     <style>
         
         body {
-        background-color: #b3d9ff; /* Color de fondo azul clarito */
+        background-color: #ffffff; /* Color de fondo azul clarito */
         margin: 0;
         padding: 0;
         font-family: Arial, sans-serif;
@@ -44,14 +44,16 @@
  
     <header>
         <img src="../assets/homePage.png" alt="Inicio" id="homeButton" style="cursor:pointer;" />
-    
         <h1>Software Educativo - Rutas de Aprendizaje</h1>
-    
+        
+        
     </header>
 
-    <div class="my-5">
-        <h2 class="titulo-aulas">HOMEPAGE</h2>
+    <div class="my-5 title-container">
+        <h2 class="titulo-aulas">Bienvenido a tu gestor de notas</h2>
     </div>
+
+    
     
     <div class="content-center">
         <div class="container">
@@ -71,8 +73,8 @@
                         </div> -->
             
                         <!-- Crea tu Aula de Clases -->
-                        <div class="col-md-3">
-                            <div class="card text-white bg-secondary mb-3 aula-card"> <!-- Asegúrate de tener esta clase aquí -->
+                        <<div class="col-md-5">
+                            <div class="card text-white bg-primary mb-3 aula-card">
                                 <div class="card-body text-center">
                                     <i class="fas fa-cogs fa-2x fa-icon"></i>
                                     <h5 class="card-title">Crea tu Aula de Clases</h5>
@@ -82,7 +84,7 @@
                         </div>
             
                         <!-- Estudiantes por Curso -->
-                        <div class="col-md-3">
+                        <div class="col-md-5">
                             <div class="card text-white bg-success mb-3 estudiantes-card">
                                 <div class="card-body text-center">
                                     <i class="fas fa-chalkboard-teacher fa-2x fa-icon"></i>
@@ -116,5 +118,24 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
+
+<footer class="bg-light text-center text-lg-start text-muted">
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">
+        © 2024 <a class="text-reset fw-bold" href="https://nombreDelColegio.edu">Nombre del Colegio</a>
+        <span class="mx-3">|</span>
+        <a href="#!" class="text-reset">Contacto</a>
+        <div class="text-center p-3">
+            <a href="" class="text-reset me-4">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="" class="text-reset me-4">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a href="" class="text-reset me-4">
+                <i class="fab fa-instagram"></i>
+            </a>
+        </div>
+    </div>
+</footer>
 
 </html>

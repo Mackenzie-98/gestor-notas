@@ -6,7 +6,7 @@ html {
 }
 
 body {
-    background-color: #b3d9ff; /* Color de fondo azul clarito */
+    background-color: #152250; /* Color de fondo azul clarito */
 }
 
 body {
@@ -23,7 +23,7 @@ body {
 }
 
 header {
-    color: #FBB048;
+    color: #FBB038;
     background-color: #152250;
     text-align: center;
     padding: 0.8em 0;
@@ -60,3 +60,251 @@ body, html {
     text-shadow: 2px 2px 4px rgba(0,0,0,0.2); /* Sombra suave para dar profundidad */
 }
 
+/* Ajustes generales */
+.content-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Animación y colores para las cards */
+.card {
+    cursor: pointer;
+    transition: transform .5s; /* Suaviza la transición */
+}
+
+.card:hover {
+    transform: scale(1.05); /* Efecto de zoom al pasar el cursor */
+}
+
+/* Colores específicos para cada card basados en tu paleta */
+.aula-card {
+    background-color: #0f44ad !important; /* Azul más oscuro */
+}
+
+.estudiantes-card {
+    background-color: #FBB038 !important; /* Azul claro */
+}
+
+/* Si decides agregar más cards, puedes asignarles clases y colores así */
+.bg-primary-custom {
+    background-color: #152250 !important; /* Azul muy oscuro */
+}
+
+.bg-warning-custom {
+    background-color: #fbb038 !important; /* Amarillo */
+}
+
+/* Ajustes de iconos y texto */
+.fa-icon {
+    margin-bottom: 5px; /* Espacio debajo del icono */
+    color: #ffffff; /* Iconos blancos para mejor contraste */
+}
+
+.card-title, .card-text {
+    color: #ffffff; /* Texto blanco para todas las cards */
+}
+
+.title-container {
+    text-align: center;
+    padding: 20px;
+}
+
+.titulo-aulas {
+    font-family: 'Comic Sans MS', cursive, sans-serif; /* Fuente con estilo escolar */
+    color: #3366CC; /* Color azul */
+    text-shadow: 2px 2px 4px #999999; /* Sombra para darle profundidad */
+    animation: swing 5s infinite ease-in-out; /* Animación oscilante */
+}
+
+@keyframes swing {
+    0% { transform: rotate(-5deg); }
+    50% { transform: rotate(5deg); }
+    100% { transform: rotate(-5deg); }
+}
+
+body, h1, .card, .container, .fa-icon {
+    /* Tus estilos existentes para body, h1, etc., quedan igual */
+}
+
+body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f6;
+            color: #333;
+        }
+
+        .content-center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: #152250;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .titulo-aulas {
+            color: #0056b3;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            animation: fadeIn 2s ease-out;
+        }
+
+        .card {
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+            border: none;
+            border-radius: 8px;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .aula-card, .estudiantes-card {
+            background-color: #94d2bd;
+            color: #fff;
+        }
+
+        .aula-card .fa-icon, .estudiantes-card .fa-icon {
+            color: #deddec;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+
+        footer {
+            background-color: #152250;
+            color: #152250;
+            padding-top: 3rem;
+        }
+        
+        footer a.text-reset {
+            color: #152250;
+        }
+        
+        footer .fa {
+            margin-right: 15px;
+        }
+        
+        .text-center {
+            text-align: center;
+        }
+        
+        .text-lg-start {
+            text-align: left;
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #152250;
+            color: #ffffff;
+        }
+        
+        .container {
+            max-width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header h1 {
+            color: #fbb038;
+            text-align: center;
+            animation: fadeIn 2s ease-out;
+        }
+        
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            text-align: center;
+        }
+        
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+        
+        .nav-item {
+            color: #9cc4f6;
+            text-decoration: none;
+            font-size: 1.2em;
+            transition: color 0.3s ease-in-out;
+        }
+        
+        .nav-item:hover {
+            color: #fbb038;
+        }
+        
+        .call-to-action {
+            text-align: center;
+            margin-top: 50px;
+        }
+        
+        .cta-button {
+            background-color: #0f44ad;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+        
+        .cta-button:hover {
+            background-color: #fbb038;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .custom-margin-top {
+            margin-top: 2rem !important; /* Ajusta esto según tus necesidades */
+        }
+        
+        footer {
+            background: linear-gradient(45deg, #152250, #0f44ad, #9cc4f6); /* Gradiente de tres colores */
+            color: #ffffff; /* Texto en blanco para mejor contraste */
+        }
+        
+        footer a {
+            color: #fbb038; /* Color destacado para enlaces */
+        }
+        
+        footer a:hover {
+            color: #ffffff; /* Cambia el color al pasar el cursor */
+        }
+        
+        header {
+            background: linear-gradient(45deg, #152250, #0f44ad, #9cc4f6);
+            color: #ffffff; /* Asegura que el texto sea blanco para contrastar con el fondo oscuro */
+            padding: 1rem 0; /* Ajusta el padding según necesites */
+            text-align: center; /* Centra el texto */
+        }
+      
+        header h1 {
+            color: #fbb038; /* Usa el color amarillo para destacar el título */
+        }
+        
+        .nav-item, footer a {
+            color: #fbb038; /* Color destacado para enlaces */
+        }
+        
+        .nav-item:hover, footer a:hover {
+            color: #ffffff; /* Cambia el color al pasar el cursor */
+        }
+        

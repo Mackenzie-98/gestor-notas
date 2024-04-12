@@ -51,7 +51,7 @@ footer {
 
 .card-body {
     padding: 20px; /* Espaciado interno más generoso */
-    background-color: #f5f5f5; /* Un fondo suave y moderno, cambia según tu preferencia */
+    background-color: #0f44ad; /* Un fondo suave y moderno, cambia según tu preferencia */
 }
 
 .card:hover {
@@ -94,4 +94,69 @@ body, html {
         font-size: 48px; /* Tamaño de fuente grande */
         font-weight: bold; /* Fuente en negrita */
         text-shadow: 2px 2px 4px rgba(0,0,0,0.2); /* Sombra suave para dar profundidad */
+    }
+
+    .card {
+        width: 100%; /* O el tamaño que prefieras */
+        background-color: #0f44ad; /* Azul vibrante como fondo */
+        color: #ffffff; /* Texto en blanco para alto contraste */
+        border-left: 8px solid #fbb038; /* Acento lateral en amarillo */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Sombra para profundidad */
+        margin-bottom: 20px; /* Separación entre tarjetas */
+        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Transición suave para efectos */
+    }
+    
+    .card:hover {
+        transform: translateY(-5px); /* Elevación al pasar el cursor */
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25); /* Sombra más intensa al hover */
+    }
+    
+    .card-body {
+        padding: 20px; /* Relleno interno */
+    }
+    
+    .card-title {
+        font-size: 1.25rem; /* Tamaño de fuente grande para título */
+        font-weight: bold; /* Negrita para título */
+        color: #fbb038; /* Amarillo para el título */
+    }
+    
+    .card-text {
+        color: #ffffff; /* Texto en blanco para descripción */
+    }
+    
+    .btn-primary {
+        background-color: #152250; /* Botón azul oscuro */
+        border: none; /* Sin bordes para un look más limpio */
+        color: #ffffff;
+    }
+    
+    .btn-primary:hover {
+        background-color: #fbb038; /* Azul claro al pasar el cursor */
+        color: #152250; /* Texto azul oscuro para contraste */
+    }
+    
+    .btn-ver-estudiantes {
+        background-color: #152250; /* Azul oscuro */
+        color: #ffffff; /* Texto en blanco para alto contraste */
+        font-size: 16px; /* Tamaño de fuente adecuado */
+        border-radius: 5px; /* Bordes redondeados para un aspecto más suave */
+        padding: 10px 20px; /* Padding generoso para un mejor tacto */
+        border: none; /* Sin bordes para mantenerlo limpio */
+        transition: background-color 0.3s, transform 0.3s; /* Transición suave para interactividad */
+        display: inline-block; /* Asegura que el enlace se comporte como un botón */
+        text-align: center; /* Centra el texto dentro del botón */
+        text-decoration: none; /* Elimina el subrayado típico de los enlaces */
+    }
+    
+    .btn-ver-estudiantes:hover, .btn-ver-estudiantes:focus {
+        background-color: #fbb038; /* Cambia al azul claro para el hover */
+        color: #152250; /* Texto en azul oscuro para contraste */
+        transform: translateY(-2px); /* Eleva el botón ligeramente para un efecto visual */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Añade sombra para profundidad */
+    }
+    
+    .btn-ver-estudiantes:active {
+        background-color: #0f44ad; /* Azul más intenso al presionar */
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra más suave */
     }

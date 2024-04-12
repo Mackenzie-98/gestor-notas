@@ -93,3 +93,61 @@ footer {
 #modalHistorial .modal-body {
     padding: 0; /* Elimina el padding predeterminado para alinear el borde de la lista con el modal */
 }
+
+.btn-info.btn-sm {
+    background-color: #0f44ad; /* Azul intenso de la paleta */
+    color: #ffffff; /* Texto en blanco para contraste */
+    border: none; /* Elimina el borde predeterminado */
+    padding: 5px 15px; /* Relleno ajustado para tamaño pequeño */
+    border-radius: 5px; /* Bordes redondeados */
+    transition: all 0.3s ease; /* Transición suave para efectos visuales */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra suave para profundidad */
+}
+
+.btn-info.btn-sm:hover, .btn-info.btn-sm:focus {
+    background-color: #152250; /* Azul más oscuro al interactuar */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Sombra más intensa en hover */
+}
+
+.btn-info.btn-sm:active {
+    background-color: #9cc4f6; /* Azul claro al hacer clic */
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2); /* Sombra menos intensa al presionar */
+}
+
+.btn-primary.mb-2.shadow-lg {
+    background-color: #152250; /* Azul oscuro de la paleta */
+    color: #ffffff; /* Texto en blanco para buen contraste */
+    border: none; /* Eliminamos el borde predeterminado */
+    padding: 8px 20px; /* Ajustamos el relleno para mejor ergonomía */
+    border-radius: 5px; /* Bordes redondeados */
+    transition: all 0.3s ease; /* Transición suave para los efectos visuales */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra más definida para un efecto 3D */
+}
+
+.btn-primary.mb-2.shadow-lg:hover, .btn-primary.mb-2.shadow-lg:focus {
+    background-color: #0f44ad; /* Cambiamos a un azul más claro al interactuar */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Sombra más intensa en hover */
+}
+
+.btn-primary.mb-2.shadow-lg:active {
+    background-color: #9cc4f6; /* Azul claro al hacer clic */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra menos intensa al presionar */
+}
+
+.modal-header {
+    background-color: #152250; /* Azul oscuro */
+    color: #fbb038; /* Amarillo */
+}
+
+.modal-header .modal-title {
+    color: #fbb038; /* Amarillo */
+}
+
+.modal-header .close {
+    color: #fbb038; /* Amarillo */
+    opacity: 1;
+}
+
+.modal-content {
+    border-radius: 0; /* Estilo más minimalista */
+}

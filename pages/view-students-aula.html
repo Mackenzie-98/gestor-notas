@@ -46,6 +46,7 @@
                     <h2 class="my-3" style="color: #fbb048; font-size: 24px;">Panel Admin</h2>
                     <button class="btn btn-primary mb-2 shadow-lg" data-toggle="modal" data-target="#modalAgregarComportamiento">Agregar comportamiento</button>
 
+
                 </div>
             </div>
         </div>
@@ -68,20 +69,41 @@
                             <label for="puntos">Agregar Puntos:</label>
                             <input type="number" class="form-control" id="puntos" required>
                         </div>
-                        <button type="submit" class="btn btn-success">Agregar</button>
+                        <button type="submit" class="bbtn btn-primary mb-2 shadow-lg">Agregar</button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
     
+    <!-- Modal para Alertas -->
+<div class="modal fade" id="alertModal" tabindex="-1" aria-labelledby="alertModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" style="background-color: #f4f4f4;">
+            <div class="modal-header" style="background-color: #152250; color: #fbb038;">
+                <h5 class="modal-title" id="alertModalLabel">Atención</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color: #fbb038;">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" style="color: #0f44ad;">
+                <!-- Mensaje de la alerta -->
+            </div>
+            <div class="modal-footer" style="background-color: #9cc4f6;">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 
     <div id="modalHistorial" class="modal fade" tabindex="-1" role="dialog">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content shadow-lg">
-                <div class="modal-header bg-dark text-white">
+                <div class="modal-header">
                     <h5 class="modal-title">Historial de Puntajes</h5>
                     <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+                        
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
@@ -93,6 +115,7 @@
             </div>
         </div>
     </div>
+    
     
     
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

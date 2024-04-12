@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function () {
             <div class="card-body">
                 <h5 class="card-title">${aula.nombre}</h5>
                 <p class="card-text">Estudiantes: ${aula.estudiantes.length}</p>
-                <a href="#" class="btn btn-primary" onclick="mostrarEstudiantes(${index})">Ver Estudiantes</a>
+                <a href="#" class="btn btn-ver-estudiantes" onclick="mostrarEstudiantes(${index})">Ver Estudiantes</a>
             </div>
         `;
         listaAulas.appendChild(card);
